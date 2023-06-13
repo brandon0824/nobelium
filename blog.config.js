@@ -1,5 +1,5 @@
 const BLOG = {
-  title: 'Brandon Space',
+  title: 'Helios',
   author: 'Brandon Ng',
   email: 'brandonng@foxmail.com',
   link: 'https://brandonng.cc',
@@ -18,7 +18,7 @@ const BLOG = {
   showArchive: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   ogImageGenerateURL: 'https://og-image-craigary.vercel.app', // The link to generate OG image, don't end with a slash
-  socialLink: 'https://twitter.com/craigaryhart',
+  socialLink: 'mailto:brandonng@foxmail.com',
   seo: {
     keywords: ['Blog', 'Notion'],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
