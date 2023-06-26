@@ -11,18 +11,15 @@ import { LocaleProvider } from '@/lib/locale'
 import { prepareDayjs } from '@/lib/dayjs'
 import { ThemeProvider } from '@/lib/theme'
 import Scripts from '@/components/Scripts'
-import { Analytics } from '@vercel/analytics/react';
 
 const Ackee = dynamic(() => import('@/components/Ackee'), { ssr: false })
 const Gtag = dynamic(() => import('@/components/Gtag'), { ssr: false })
 
-function MyApp({ Component, pageProps }) {
+import Script from 'next/script'
+export default function MyApp({ Component, pageProps }) {
   return (
-    <>
-      <Component {...pageProps} />
-      <Analytics />
-    </>
-  );
+    <script async src="https://analytics.umami.is/script.js" data-website-id="1460873e-4336-4bf6-a36e-daf4fa1cadad"></script>
+  )
 }
  
 export default MyApp;
