@@ -17,6 +17,7 @@ const Gtag = dynamic(() => import('@/components/Gtag'), { ssr: false })
 
 export default function MyApp ({ Component, pageProps, config, locale }) {
   return (
+    <script async src="https://analytics.umami.is/script.js" data-website-id="1460873e-4336-4bf6-a36e-daf4fa1cadad"></script>
     <ConfigProvider value={config}>
       <Scripts />
       <LocaleProvider value={locale}>
@@ -49,11 +50,4 @@ MyApp.getInitialProps = async ctx => {
     config,
     locale: await loadLocale('basic', config.lang)
   }
-}
-
-import Script from 'next/script'
-export default function MyApp({ Component, pageProps }) {
-  return (
-    <script async src="https://analytics.umami.is/script.js" data-website-id="1460873e-4336-4bf6-a36e-daf4fa1cadad"></script>
-  )
 }
