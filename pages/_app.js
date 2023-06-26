@@ -11,17 +11,20 @@ import { LocaleProvider } from '@/lib/locale'
 import { prepareDayjs } from '@/lib/dayjs'
 import { ThemeProvider } from '@/lib/theme'
 import Script from 'next/script'
+import Head from 'next/head';
 
 const Ackee = dynamic(() => import('@/components/Ackee'), { ssr: false })
 const Gtag = dynamic(() => import('@/components/Gtag'), { ssr: false })
 
 export default function MyApp ({ Component, pageProps, config, locale }) {
   return (
-    <script async src="https://analytics.umami.is/script.js" data-website-id="1460873e-4336-4bf6-a36e-daf4fa1cadad"></script>
     <ConfigProvider value={config}>
       <Scripts />
       <LocaleProvider value={locale}>
         <ThemeProvider>
+          <Head>
+            <script async src="https://analytics.umami.is/script.js" data-website-id="1460873e-4336-4bf6-a36e-daf4fa1cadad"></script>
+          </Head>
           <>
             {process.env.VERCEL_ENV === 'production' && config?.analytics?.provider === 'ackee' && (
               <Ackee
