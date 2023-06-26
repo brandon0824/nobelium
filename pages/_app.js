@@ -21,3 +21,17 @@ export default function MyApp({ Component, pageProps }) {
     <script async src="https://analytics.umami.is/script.js" data-website-id="1460873e-4336-4bf6-a36e-daf4fa1cadad"></script>
   )
 }
+
+MyApp.getInitialProps = async ctx => {
+  const config = typeof window === 'object'
+    ? await fetch('/api/config').then(res => res.json())
+    : await import('@/lib/server/config').then(module => module.clientConfig)
+
+  prepareDayjs(config.timezone)
+
+  return {
+    ...App.getInitialProps(ctx),
+    config,
+    locale: await loadLocale('basic', config.lang)
+  }
+}
