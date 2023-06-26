@@ -15,27 +15,18 @@ import Scripts from '@/components/Scripts'
 const Ackee = dynamic(() => import('@/components/Ackee'), { ssr: false })
 const Gtag = dynamic(() => import('@/components/Gtag'), { ssr: false })
 
-export default function MyApp ({ Component, pageProps, config, locale }) {
+import { Analytics } from '@vercel/analytics/react';
+ 
+function MyApp({ Component, pageProps }) {
   return (
-    <ConfigProvider value={config}>
-      <Scripts />
-      <LocaleProvider value={locale}>
-        <ThemeProvider>
-          <>
-            {process.env.VERCEL_ENV === 'production' && config?.analytics?.provider === 'ackee' && (
-              <Ackee
-                ackeeServerUrl={config.analytics.ackeeConfig.dataAckeeServer}
-                ackeeDomainId={config.analytics.ackeeConfig.domainId}
-              />
-            )}
-            {process.env.VERCEL_ENV === 'production' && config?.analytics?.provider === 'ga' && <Gtag />}
-            <Component {...pageProps} />
-          </>
-        </ThemeProvider>
-      </LocaleProvider>
-    </ConfigProvider>
-  )
+    <>
+      <Component {...pageProps} />
+      <Analytics />
+    </>
+  );
 }
+ 
+export default MyApp;
 
 MyApp.getInitialProps = async ctx => {
   const config = typeof window === 'object'
