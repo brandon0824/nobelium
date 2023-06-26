@@ -10,7 +10,7 @@ import { ConfigProvider } from '@/lib/config'
 import { LocaleProvider } from '@/lib/locale'
 import { prepareDayjs } from '@/lib/dayjs'
 import { ThemeProvider } from '@/lib/theme'
-import Script from 'next/script'
+import Scripts from 'next/script'
 import Head from 'next/head';
 
 const Ackee = dynamic(() => import('@/components/Ackee'), { ssr: false })
