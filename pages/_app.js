@@ -12,10 +12,28 @@ import { prepareDayjs } from '@/lib/dayjs'
 import { ThemeProvider } from '@/lib/theme'
 import Scripts from '@/components/Scripts'
 
-import Script from 'next/script'
-export default function MyApp({ Component, pageProps }) {
+const Ackee = dynamic(() => import('@/components/Ackee'), { ssr: false })
+const Gtag = dynamic(() => import('@/components/Gtag'), { ssr: false })
+
+export default function MyApp ({ Component, pageProps, config, locale }) {
   return (
-    <script async src="https://analytics.umami.is/script.js" data-website-id="1460873e-4336-4bf6-a36e-daf4fa1cadad"></script>
+    <ConfigProvider value={config}>
+      <Scripts />
+      <LocaleProvider value={locale}>
+        <ThemeProvider>
+          <>
+            {process.env.VERCEL_ENV === 'production' && config?.analytics?.provider === 'ackee' && (
+              <Ackee
+                ackeeServerUrl={config.analytics.ackeeConfig.dataAckeeServer}
+                ackeeDomainId={config.analytics.ackeeConfig.domainId}
+              />
+            )}
+            {process.env.VERCEL_ENV === 'production' && config?.analytics?.provider === 'ga' && <Gtag />}
+            <Component {...pageProps} />
+          </>
+        </ThemeProvider>
+      </LocaleProvider>
+    </ConfigProvider>
   )
 }
 
@@ -31,4 +49,11 @@ MyApp.getInitialProps = async ctx => {
     config,
     locale: await loadLocale('basic', config.lang)
   }
+}
+
+import Script from 'next/script'
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <script async src="https://analytics.umami.is/script.js" data-website-id="1460873e-4336-4bf6-a36e-daf4fa1cadad"></script>
+  )
 }
