@@ -1,7 +1,7 @@
 const BLOG = {
   title: 'Helios',
   author: 'Brandon Ng',
-  email: 'brandonng@foxmail.com',
+  email: 'brandonng0824@gmail.com',
   link: 'https://brandonng.cc',
   description: 'This gonna be an awesome place to say something.',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
