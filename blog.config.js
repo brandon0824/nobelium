@@ -2,7 +2,7 @@ const BLOG = {
   title: 'Helios',
   author: 'Brandon Ng',
   email: 'brandonng0824@gmail.com',
-  link: 'https://brandonng.cc/about',
+  link: 'https://brandonng.cc',
   description: 'This gonna be an awesome place to say something.',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Shanghai', // Your Notion posts' date will be interpreted as this timezone. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
@@ -12,13 +12,13 @@ const BLOG = {
   darkBackground: '#18181B', // use hex value, don't forget '#'
   path: '', // leave this empty unless you want to deploy Nobelium in a folder
   since: 2023, // If leave this empty, current year will be used.
-  postsPerPage: 7,
+  postsPerPage: 10,
   sortByDate: true,
   showAbout: true,
   showArchive: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   ogImageGenerateURL: 'https://og-image-craigary.vercel.app', // The link to generate OG image, don't end with a slash
-  socialLink: 'mailto:brandonng0824@gmail.com',
+  socialLink: 'https://brandonng.cc/about',
   seo: {
     keywords: ['Blog', 'Notion'],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
