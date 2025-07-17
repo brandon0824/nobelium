@@ -4,7 +4,7 @@
   "homepage": "https://nobelium.js.org",
   "license": "MIT",
   "engines": {
-    "node": "22.x"
+    "node": "18.x"
   },
   "repository": {
     "type": "git",
